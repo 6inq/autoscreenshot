@@ -1,6 +1,6 @@
 # Auto Screenshot
 
-An RS3 plugin that takes a screenshot of your big moments: level-ups, achievements, rare drops and your game broadcasts. Created by **6ing**. Version **1.0.0**. Free.
+An RS3 plugin that takes a screenshot of your big moments: level-ups, achievements, rare drops and your game broadcasts. Created by **6ing**. Version **1.0.0**.
 
 Part of [6ing's RS3 plugins](https://github.com/6inq/rs3-plugins).
 
