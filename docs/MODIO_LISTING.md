@@ -18,12 +18,12 @@ Automatically screenshots your big moments: level-ups (all, 99s, 120s, 99s & 120
 
 **Homepage**
 ```
-https://github.com/6inq/auto-screenshot
+https://github.com/6inq/autoscreenshot
 ```
 
 **Profile URL**
 ```
-https://mod.io/g/runescape/m/auto-screenshot
+https://mod.io/g/runescape/m/autoscreenshot
 ```
 
 **Community**
