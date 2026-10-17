@@ -12,7 +12,7 @@ end
 
 function T.defaults()
   local s = Store.new(memoryDb())
-  A.eq(s:get("levelMode"), "99_120"); A.eq(s:get("broadcasts"), true); A.eq(s:get("rareDrops"), true)
+  A.eq(s:get("levelMode"), "99_120"); A.eq(s:get("broadcasts"), true); A.eq(s:get("rareDrops"), true); A.eq(s:get("achievements"), true)
   A.eq(s:get("folder"), ""); A.eq(s:get("counter"), 0)
 end
 

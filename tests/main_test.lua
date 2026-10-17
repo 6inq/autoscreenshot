@@ -188,4 +188,28 @@ function T.shutdown_unsubscribes()
   A.eq(next(env.events), nil)
 end
 
+function T.achievements_are_captured_and_can_be_turned_off()
+  local env = boot({ camera = true })
+  chat(env, "Congratulations! You have completed the achievement: Into the Abyss!")
+  A.eq(#env.shots, 1); A.eq(env.shots[1].file, "6ing_Achievement-Into-the-Abyss_0001.png")
+  A.truthy(panelText(env):find("Achievement Into the Abyss", 1, true))
+  env.events["Settings:auto-screenshot:settings"]({ component = { kind = "settings" } })
+  for _, c in ipairs(env.settings[1]) do
+    if c.method == "AddCheckboxButton" then c.args[2].onChange(nil, nil, "achievements", false) end
+  end
+  idle(env, 6)
+  chat(env, "Congratulations! You have completed the achievement: Sink or Swim!")
+  A.eq(#env.shots, 1, "off")
+  A.eq(Store.new(PersistentDB):get("achievements"), false)
+  PluginShutdown()
+end
+
+function T.achievement_and_its_broadcast_make_one_screenshot()
+  local env = boot({ camera = true })
+  chat(env, "Congratulations! You have completed the achievement: Insane Final Boss!")
+  chat(env, "News: 6ing has completed the achievement: Insane Final Boss")
+  A.eq(#env.shots, 1)
+  PluginShutdown()
+end
+
 return T

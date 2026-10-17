@@ -9,4 +9,11 @@ return {
     "you have a funny feeling like you're being followed",
     "you feel something weird sneaking into your backpack",
   },
+  -- Achievement completed. The pop-up says "Achievement Complete!"; the chat wording is not
+  -- documented, so these cover the likely phrasings. Confirm in game.
+  achievements = {
+    "achievement complete",
+    "completed the achievement",
+    "completed an achievement",
+  },
 }

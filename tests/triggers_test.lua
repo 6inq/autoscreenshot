@@ -89,4 +89,26 @@ function T.file_names()
   A.eq(Naming.fileName(nil, { kind = "broadcast" }, 1), "player_Broadcast_0001.png")
 end
 
+function T.achievement_messages()
+  local t = Triggers.new(PATTERNS)
+  local kind, name = t:chatKind("Congratulations! You have completed the achievement: Into the Abyss!", "6ing")
+  A.eq(kind, "achievement"); A.eq(name, "Into the Abyss")
+  kind, name = t:chatKind("<col=ffff00>Achievement complete:</col> Sink or Swim.", "6ing")
+  A.eq(kind, "achievement"); A.eq(name, "Sink or Swim")
+  kind, name = t:chatKind("You have completed an achievement.", "6ing")
+  A.eq(kind, "achievement"); A.eq(name, nil, "no name in the message")
+end
+
+function T.chat_merely_mentioning_achievements_is_ignored()
+  local t = Triggers.new(PATTERNS)
+  A.eq(t:chatKind("Check your achievements in the Hero interface.", "6ing"), nil)
+  A.eq(t:chatKind("News: Zezima has completed the achievement: Completionist", "6ing"), nil, "other players' broadcasts")
+end
+
+function T.achievement_file_names()
+  A.eq(Naming.fileName("6ing", { kind = "achievement", name = "Into the Abyss" }, 3), "6ing_Achievement-Into-the-Abyss_0003.png")
+  A.eq(Naming.fileName("6ing", { kind = "achievement", name = "Don't Look Down!" }, 4), "6ing_Achievement-Dont-Look-Down_0004.png")
+  A.eq(Naming.fileName("6ing", { kind = "achievement" }, 5), "6ing_Achievement_0005.png")
+end
+
 return T

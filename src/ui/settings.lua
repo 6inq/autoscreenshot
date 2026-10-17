@@ -25,6 +25,7 @@ local function mount(parent, store)
   view:AddCheckboxButton({
     { text = "Your game broadcasts (rare drops, 99s, 120s, and more)", value = "broadcasts", selected = store:get("broadcasts") },
     { text = "Rare drop messages (loot beam, pets)", value = "rareDrops", selected = store:get("rareDrops") },
+    { text = "Achievements completed", value = "achievements", selected = store:get("achievements") },
   }, { onChange = function(_, _, changed, selected) store:set(changed, selected) end })
 
   view:AddTitle("Save location")

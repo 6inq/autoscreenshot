@@ -70,9 +70,21 @@ local function plain(message)
   return (tostring(message or ""):gsub("<[^>]*>", "")):lower()
 end
 
+-- "...completed the achievement: Into the Abyss!" -> "Into the Abyss"
+local function achievementName(text, original)
+  local start = text:find("achievement[^:]*:")
+  if not start then return nil end
+  local raw = tostring(original or ""):gsub("<[^>]*>", "")
+  local name = raw:match("[Aa]chievement[^:]*:%s*(.-)%s*[!%.]*$")
+  if name and name ~= "" then return name end
+  return nil
+end
+
 -- Classify a chat message: "broadcast" (a game broadcast about you), "drop" (rare drop
--- message), or nil.
+-- message), "achievement" (achievement completed, plus its name when the message has one),
+-- or nil.
 ---@param playerName string? your display name
+---@return string? kind, string? achievement name
 function Triggers:chatKind(message, playerName)
   local text = plain(message)
   if text == "" then return nil end
@@ -82,6 +94,7 @@ function Triggers:chatKind(message, playerName)
     return nil
   end
   if containsAny(text, self.patterns.rareDrops) then return "drop" end
+  if containsAny(text, self.patterns.achievements or {}) then return "achievement", achievementName(text, message) end
   return nil
 end
 

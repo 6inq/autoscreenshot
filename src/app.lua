@@ -70,9 +70,10 @@ function App:_checkLevels()
 end
 
 function App:onChat(event)
-  local kind = self.triggers:chatKind(event and event.chatMessage, playerName())
+  local kind, name = self.triggers:chatKind(event and event.chatMessage, playerName())
   if kind == "broadcast" and self.store:get("broadcasts") then self:_moment({ kind = "broadcast" }) end
   if kind == "drop" and self.store:get("rareDrops") then self:_moment({ kind = "drop" }) end
+  if kind == "achievement" and self.store:get("achievements") then self:_moment({ kind = "achievement", name = name }) end
 end
 
 function App:onTick()

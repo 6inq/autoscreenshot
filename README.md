@@ -1,6 +1,6 @@
 # Auto Screenshot
 
-An RS3 plugin that takes a screenshot of your big moments: level-ups, rare drops and your game broadcasts. Created by **6ing**. Version **1.0.0**. Free.
+An RS3 plugin that takes a screenshot of your big moments: level-ups, achievements, rare drops and your game broadcasts. Created by **6ing**. Version **1.0.0**. Free.
 
 Part of [6ing's RS3 plugins](https://github.com/6inq/rs3-plugins).
 
@@ -13,6 +13,7 @@ Part of [6ing's RS3 plugins](https://github.com/6inq/rs3-plugins).
   - **Only broadcasts**: no level-up screenshots unless the game broadcasts them
 - **Your game broadcasts**: `News:` messages that mention your name, such as rare drops, 99s and 120s. Other players' broadcasts are ignored.
 - **Rare drop messages**: the golden loot beam and pet messages.
+- **Achievements**: each completed achievement. The name goes in the file name when the game says it, e.g. `6ing_Achievement-Into-the-Abyss_0003.png`.
 - A 99 also sends a broadcast. Moments within 3 seconds of each other are merged, so each gives **one** screenshot.
 - Lamp jumps count (97 to 99 is still a 99). Logging in never triggers anything.
 
@@ -24,7 +25,7 @@ Jagex has not given plugins a way to take screenshots or save files. None of the
 - Capturing lives in one file, `src/game/capture.lua`, to wire up once the API exists.
 - Until then, the panel (ribbon icon) lists each moment it **would** have captured. You can check the triggers in game today.
 
-The broadcast and rare-drop wordings are in `src/data/patterns.lua`. Confirm them in game and add any that are missing.
+The broadcast, rare-drop and achievement wordings are in `src/data/patterns.lua`. The achievement chat wording isn't documented anywhere, so it matches the likely phrasings. Confirm them in game and add any that are missing.
 
 ## Fair play
 Auto Screenshot only watches your own levels and chat and takes pictures. It never acts in game.
@@ -52,10 +53,10 @@ Then run the suite:
 python tests/run.py
 ```
 
-The suite has 30 tests:
+The suite has 35 tests:
 - every level option against real transitions: lamp jumps, virtual levels 100+, 120s
 - your broadcasts vs other players', with colour tags removed
-- rare drops and merging of near-simultaneous moments
+- rare drops, achievements (with and without a name) and merging of near-simultaneous moments
 - a full boot of `main.lua`, including:
   - the screenshot flow, with and without a camera
   - the save folder and file names

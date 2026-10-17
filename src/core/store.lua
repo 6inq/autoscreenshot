@@ -18,6 +18,7 @@ local SETTINGS = {
   levelMode = { default = "99_120", valid = isMode },
   broadcasts = { default = true, valid = isBool },
   rareDrops = { default = true, valid = isBool },
+  achievements = { default = true, valid = isBool },
   folder = { default = "", valid = isFolder },
   counter = { default = 0, valid = isCount },
 }

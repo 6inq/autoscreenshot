@@ -7,10 +7,13 @@ function Naming.safe(text)
   return cleaned ~= "" and cleaned or "player"
 end
 
----@param reason table { kind = "level"|"broadcast"|"drop", skillName?, level? }
+---@param reason table { kind = "level"|"broadcast"|"drop"|"achievement", skillName?, level?, name? }
 function Naming.describe(reason)
   if reason.kind == "level" then return "Level " .. reason.level .. " " .. reason.skillName end
   if reason.kind == "drop" then return "Rare drop" end
+  if reason.kind == "achievement" then
+    return reason.name and ("Achievement " .. reason.name) or "Achievement"
+  end
   return "Broadcast"
 end
 
