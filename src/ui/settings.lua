@@ -1,5 +1,6 @@
 -- Settings panel: which levels, broadcasts, rare drops, and where to save.
 local Triggers = require("src/core/triggers")
+local Combo = require("src/ui/combo")
 
 local Settings = {}
 
@@ -12,15 +13,9 @@ local function mount(parent, store)
   view:AddTitle("Auto Screenshot")
 
   view:AddText("Level-ups to capture")
-  local entries = {}
-  for index, mode in ipairs(Triggers.LEVEL_MODES) do entries[index] = { label = mode.label, id = mode.id } end
-  view:AddComboBox({
-    entries = entries, selectedID = store:get("levelMode"),
-    onChange = function(_, entryID, _, eventType)
-      if eventType ~= nil and eventType ~= ui.SelectionChangeEvent.SELECTED then return end
-      store:set("levelMode", entryID)
-    end,
-  })
+  local choices = {}
+  for index, mode in ipairs(Triggers.LEVEL_MODES) do choices[index] = { label = mode.label, key = mode.id } end
+  view:AddComboBox(Combo.options(choices, store:get("levelMode"), function(key) store:set("levelMode", key) end))
 
   view:AddCheckboxButton({
     { text = "Your game broadcasts (rare drops, 99s, 120s, and more)", value = "broadcasts", selected = store:get("broadcasts") },

@@ -168,8 +168,9 @@ function T.settings_offer_the_five_level_options()
   local labels = {}
   for i, e in ipairs(combo.args[1].entries) do labels[i] = e.label end
   A.list(labels, { "All levels", "Only 99s", "Only 120s", "99s & 120s", "Only broadcasts" })
-  A.eq(combo.args[1].selectedID, "99_120", "99s & 120s by default")
-  combo.args[1].onChange(nil, "120", "Only 120s", 1)
+  A.eq(combo.args[1].entries[combo.args[1].selectedID].key, "99_120", "99s & 120s by default")
+  A.eq(math.type(combo.args[1].selectedID), "integer", "the game needs integer ids")
+  combo.args[1].onChange(nil, 3, "Only 120s", 1)
   A.eq(Store.new(PersistentDB):get("levelMode"), "120")
   PluginShutdown()
 end
