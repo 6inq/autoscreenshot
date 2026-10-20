@@ -87,8 +87,8 @@ function App:start()
 end
 
 function App:stop()
-  pcall(Event.ServerLogic.Unsubscribe, EVENT_ID)
-  pcall(Event.ChatMessage.Unsubscribe, EVENT_ID)
+  pcall(function() return Event.ServerLogic.Unsubscribe(EVENT_ID) end)
+  pcall(function() return Event.ChatMessage.Unsubscribe(EVENT_ID) end)
   self.listeners = {}
 end
 
