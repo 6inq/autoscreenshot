@@ -1,4 +1,3 @@
--- Ribbon panel: status and the most recent moments (captured or not).
 local Capture = require("src/game/capture")
 
 local Panel = {}

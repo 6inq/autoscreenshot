@@ -1,4 +1,3 @@
--- Persistent settings and the screenshot counter. The db is injectable for tests.
 local Triggers = require("src/core/triggers")
 
 local Store = {}
@@ -33,7 +32,6 @@ function Store.new(db)
   end
   raw = type(raw) == "table" and raw or {}
   for name, spec in pairs(SETTINGS) do
-    -- Not `valid and value or default`: that idiom turns a saved `false` back into the default.
     if spec.valid(raw[name]) then self.settings[name] = raw[name] else self.settings[name] = spec.default end
   end
   return self

@@ -1,4 +1,3 @@
--- Settings panel: which levels, broadcasts, rare drops, and where to save.
 local Triggers = require("src/core/triggers")
 local Combo = require("src/ui/combo")
 

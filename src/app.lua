@@ -1,4 +1,3 @@
--- Watches levels and chat, and takes a screenshot for each moment that matches the settings.
 local Triggers = require("src/core/triggers")
 local Skills = require("src/core/skills")
 local Naming = require("src/core/naming")
@@ -48,7 +47,6 @@ function App:_record(reason, captured, detail)
   self:_notify()
 end
 
--- One moment -> one screenshot (nearby triggers are merged).
 function App:_moment(reason)
   if not self.triggers:shouldCapture(self.tick) then return end
   local fileName = Naming.fileName(playerName(), reason, self.store:nextCounter())

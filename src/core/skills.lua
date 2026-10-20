@@ -1,4 +1,3 @@
--- RS3 skill ids (0..28, the client's stat order) and their names.
 local Skills = {}
 
 Skills.FIRST, Skills.LAST = 0, 28
@@ -10,8 +9,6 @@ Skills.NAMES = {
   "Dungeoneering", "Divination", "Invention", "Archaeology", "Necromancy",
 }
 
--- RS3 names from the list (the client enum says HITPOINTS, players say Constitution);
--- the client's SkillType enum only covers skills added after this list.
 function Skills.name(id, skillType)
   if Skills.NAMES[id] then return Skills.NAMES[id] end
   if type(skillType) == "table" then

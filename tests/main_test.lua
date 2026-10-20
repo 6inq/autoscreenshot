@@ -1,4 +1,3 @@
--- Boots main.lua with a stubbed client: levels rise, broadcasts arrive, screenshots happen.
 local A = require("assert")
 local Store = require("src/core/store")
 
@@ -49,7 +48,7 @@ local function boot(opts)
   end
   dofile("main.lua")
   env.events["Content:auto-screenshot:content"]({ component = { kind = "content" } })
-  env.events["Tick:auto-screenshot:watch"]() -- login baseline
+  env.events["Tick:auto-screenshot:watch"]()
   return env
 end
 
