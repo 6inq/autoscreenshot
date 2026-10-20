@@ -4,7 +4,7 @@ local Triggers = require("src/core/triggers")
 local Store = {}
 Store.__index = Store
 
-Store.KEY = "auto-screenshot:settings"
+Store.KEY = "auto-screenshot-settings"
 
 local function isBool(v) return type(v) == "boolean" end
 local function isFolder(v) return type(v) == "string" and #v <= 260 end
@@ -28,7 +28,7 @@ function Store.new(db)
   self.db = db or rawget(_G, "PersistentDB")
   local raw
   if self.db then
-    local ok, value = pcall(self.db.GetStructuredData, self.db, Store.KEY)
+    local ok, value = pcall(function() return self.db:GetStructuredData(Store.KEY) end)
     if ok then raw = value end
   end
   raw = type(raw) == "table" and raw or {}
@@ -48,7 +48,7 @@ function Store:set(name, value)
   if not spec or not spec.valid(value) then return false end
   self.settings[name] = value
   if self.db then
-    local ok, err = pcall(self.db.SetStructuredData, self.db, Store.KEY, self.settings)
+    local ok, err = pcall(function() return self.db:SetStructuredData(Store.KEY, self.settings) end)
     if not ok and log then log("[auto-screenshot] save failed: " .. tostring(err)) end
   end
   return true
