@@ -89,5 +89,5 @@ Start with **Private**, then switch to **Public** after testing in the live clie
 - [ ] Wire the real screenshot and save call into `src/game/capture.lua` once Jagex provides it.
 - [ ] In game, check the panel lists level-ups, your broadcasts and rare drops (and ignores other players' broadcasts).
 - [ ] Complete an achievement and check it shows in the panel; confirm the wordings in `src/data/patterns.lua`.
-- [ ] Build with `python tools/build.py` and upload `dist/auto-screenshot-1.0.0.zip`.
+- [ ] Build with `python tools/build.py` and upload `dist/auto-screenshot-1.0.1.zip`.
 - [ ] Upload your listing image.

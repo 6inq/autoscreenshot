@@ -1,6 +1,6 @@
 # Auto Screenshot
 
-An RS3 plugin that takes a screenshot of your big moments: level-ups, achievements, rare drops and your game broadcasts. Created by **6ing**. Version **1.0.0**.
+An RS3 plugin that takes a screenshot of your big moments: level-ups, achievements, rare drops and your game broadcasts. Created by **6ing**. Version **1.0.1**.
 
 Part of [6ing's RS3 plugins](https://github.com/6inq/rs3-plugins).
 
@@ -68,4 +68,6 @@ The suite has 35 tests:
 ```bash
 python tools/build.py
 ```
-The output is `dist/auto-screenshot-1.0.0.zip`.
+The output is `dist/auto-screenshot-1.0.1.zip`.
+
+See [CHANGELOG.md](CHANGELOG.md) for what changed in each version.
